@@ -1,5 +1,7 @@
 <template>
 	<view>
+		<!-- 使用自定义的搜索组件 -->
+		<my-search @myClick='clickHander'></my-search>
 		<!-- 滑动 -->
 		<view class="scroll-view-container">
 			<!-- 左侧 -->
@@ -44,7 +46,7 @@
 		onLoad() {
 			// 获取系统信息
 			const sysInfo = uni.getSystemInfoSync()
-			this.wh = sysInfo.windowHeight
+			this.wh = sysInfo.windowHeight - 50
 			
 			// 获取分类列表数据
 			this.getCateList()
@@ -74,6 +76,12 @@
 			goToGoodsList (item3) {
 				uni.navigateTo({
 					url:'/subpkg/goods_list/goods_list?cid=' + item3.cat_id 
+				})
+			},
+			
+			clickHander () {
+				uni.navigateTo({
+					url: '/subpkg/search/search'
 				})
 			}
 		}

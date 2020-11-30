@@ -1,5 +1,9 @@
 <template>
 	<view>
+		<!-- 使用搜索组件 -->
+		<view class="search-box">
+			<my-search @myClick="gotoSearch"></my-search>
+		</view>
 		<!-- 轮播图 -->
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
 			<!-- 循环渲染 -->
@@ -110,6 +114,13 @@
 			
 			// 请求成功
 			this.floorList = res.message
+		},
+		
+		// 跳转到搜索页面
+		gotoSearch (){
+			uni.navigateTo({
+				url:'/subpkg/search/search'
+			})
 		}
 	}
 }
@@ -145,5 +156,11 @@ swiper {
 		flex-wrap: wrap;
 		justify-content: space-around;
 	}
+}
+
+.search-box {
+	position: sticky;
+	top: 0;
+	z-index: 999;
 }
 </style>
